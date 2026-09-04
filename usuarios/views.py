@@ -4,6 +4,9 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm
 from .models import Usuario
 
+def index(request):
+    return render(request, 'usuarios/index.html')
+
 @login_required
 def listar_usuarios(request):
     usuarios = Usuario.objects.all()
