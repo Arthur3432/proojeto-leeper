@@ -1,105 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Tarefas</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <header>
-        <h1>Sistema de Gerenciamento de Tarefas</h1>
-        <nav>
-            <a href="/tarefas/">Tarefas</a> |
-            <a href="/tarefas/nova/">Nova Tarefa</a> |
-            <a href="/categorias/">Categorias</a> |
-            <a href="/logout/">Sair</a>
-        </nav>
-        <hr>
-    </header>
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Início</h1>
+</div>
 
-    <main>
-        <section>
-            <h2>Minhas Tarefas</h2>
+<div class="card p-4 shadow-sm mb-4">
+    <h4>Bem-vindo ao Sistema de Controle do LEEPER!</h4>
+    <p class="text-muted">
+        Este sistema tem como objetivo auxiliar na organização do inventário do LEEPER, permitindo o cadastro,
+        consulta e controle dos materiais disponíveis no laboratório[cite: 1].
+    </p>
 
-            <form action="/tarefas/buscar/" method="get">
-                <label for="busca">Buscar tarefa:</label>
-                <input type="text" id="busca" name="busca">
-                <button type="submit">Buscar</button>
-            </form>
+    <h5 class="mt-3">Funcionalidades do sistema:</h5>
+    <ul>
+        <li><strong>Materiais:</strong> cadastre, consulte e gerencie os materiais disponíveis[cite: 1].</li>
+        <li><strong>Movimentações:</strong> registre entradas e saídas de materiais para manter o controle do inventário[cite: 1].</li>
+        <li><strong>Usuários:</strong> gerencie os usuários que têm acesso ao sistema[cite: 1].</li>
+    </ul>
+</div>
 
-            <p><a href="/tarefas/nova/"><button>Nova Tarefa</button></a></p>
-
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Título</th>
-                        <th>Descrição</th>
-                        <th>Prazo</th>
-                        <th>Status</th>
-                        <th>Categoria</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Estudar Django</td>
-                        <td>Revisar conceitos de apps e models</td>
-                        <td>15/08/2026</td>
-                        <td>Em andamento</td>
-                        <td>Estudo</td>
-                        <td>
-                            <a href="/tarefas/1/editar/">Editar</a> |
-                            <a href="/tarefas/1/excluir/">Excluir</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Entregar trabalho de PDS</td>
-                        <td>Finalizar documentação do projeto</td>
-                        <td>20/08/2026</td>
-                        <td>Pendente</td>
-                        <td>Trabalho</td>
-                        <td>
-                            <a href="/tarefas/2/editar/">Editar</a> |
-                            <a href="/tarefas/2/excluir/">Excluir</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Configurar ambiente virtual</td>
-                        <td>Criar venv e instalar Django</td>
-                        <td>13/08/2026</td>
-                        <td>Concluída</td>
-                        <td>Configuração</td>
-                        <td>
-                            <a href="/tarefas/3/editar/">Editar</a> |
-                            <a href="/tarefas/3/excluir/">Excluir</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <hr>
-
-        <section>
-            <h3>Filtrar por Status</h3>
-            <ul>
-                <li><a href="/tarefas/?status=pendente">Pendentes</a></li>
-                <li><a href="/tarefas/?status=andamento">Em andamento</a></li>
-                <li><a href="/tarefas/?status=concluida">Concluídas</a></li>
-                <li><a href="/tarefas/">Todas</a></li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <hr>
-        <p>Sistema de Gerenciamento de Tarefas - Projeto Didatico 2026</p>
-    </footer>
-
-</body>
-</html>
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <div>
+        Materiais com quantidade abaixo do estoque mínimo são exibidos em vermelho na lista de materiais[cite: 1].
+    </div>
+</div>
+{% endblock %} 

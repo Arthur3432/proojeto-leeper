@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Cadastrar Usuário</h1>
+</div>
+
+<div class="card shadow-sm p-4 col-md-8">
+    <form method="POST">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Salvar</button>
+            <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
