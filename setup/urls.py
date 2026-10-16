@@ -12,11 +12,8 @@ urlpatterns = [
     # Painel de administração do Django
     path('admin/', admin.site.urls),
     
-    # Rotas do App de Usuários
+    # Rotas dos Apps do sistema LEEPER
     path('usuarios/', include('usuarios.urls')),
-    
-    # Futuros apps do sistema LEEPER (descomentar à medida que forem criados):
-    # path('materiais/', include('materiais.urls')),
-    # path('movimentacoes/', include('movimentacoes.urls')),
-    # path('alertas/', include('alertas.urls')),
+    path('materiais/', include('materiais.urls')),
+    path('movimentacoes/', include('movimentacoes.urls')),
 ]
