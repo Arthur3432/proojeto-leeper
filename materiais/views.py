@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import Material
 
+@login_required
 def listar_materiais(request):
-    return render(request, 'materiais/listar2.html')
-# Create your views here.
+    materiais = Material.objects.all()
+    return render(request, 'materiais/listar.html', {'materiais': materiais})
